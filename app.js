@@ -96,10 +96,9 @@ window.onload=function () {
 var quiz;
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', './data/questions.json', true); // Replace 'my_data' with the path to your file
+    xobj.open('GET', './data/questions.json', true); 
     xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200") {
-            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
             var actual_JSON = JSON.parse(xobj.responseText).questions;
             var questions=[];
             for(var i=0;i<actual_JSON.length;i++){
@@ -115,6 +114,10 @@ var quiz;
     xobj.send(null);
 
 //--------------------------------------------------------------------//
+
+// populating data of each question on the html page
+
+
 function populate() {
 
     if(quiz.questionIndex!==0){
@@ -191,6 +194,8 @@ function populate() {
     }
 }
 
+
+//-----------------------------------------------------//
 function prev_question() {
     quiz.prevQuestion();
     populate();
@@ -229,12 +234,7 @@ function next_question() {
     populate();
 
 }
-function confirming() {
-    document.getElementById('confirm').style.display="block";
-}
-function reconfirming() {
-    document.getElementById('confirm').style.display="none";
-}
+
 function submit_test() {
     document.getElementById('confirm').style.display="none";
     document.getElementById('next').disabled=true;
@@ -280,5 +280,10 @@ function progress() {
     document.getElementById('info_bar').innerHTML=(quiz.answerArray.length)+" / "+(quiz.questions.length);
 }
 
-
+function confirming() {
+    document.getElementById('confirm').style.display="block";
+}
+function reconfirming() {
+    document.getElementById('confirm').style.display="none";
+}
 
