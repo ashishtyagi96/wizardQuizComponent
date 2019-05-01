@@ -20,7 +20,6 @@ Quiz.prototype.isEnded = function () {
 Quiz.prototype.guess = function (answer) {
 
 
-    console.log("ans",answer);
     if(this.getQuestionIndex().correctAnswer(answer)){
         this.score++;
     }

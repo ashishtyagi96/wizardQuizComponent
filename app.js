@@ -106,7 +106,6 @@ var quiz;
                 var ques = new Questions(actual_JSON[i].title,actual_JSON[i].type,actual_JSON[i].options,actual_JSON[i].correct);
                 questions.push(ques);
             }
-            console.log(questions);
             quiz =  new Quiz(questions);
             document.getElementById('info_bar').innerHTML=(quiz.answerArray.length)+" / "+(quiz.questions.length);
 
@@ -117,8 +116,7 @@ var quiz;
 
 //--------------------------------------------------------------------//
 function populate() {
-    console.log(quiz.questionIndex);
-    console.log(quiz.questions.length);
+
     if(quiz.questionIndex!==0){
         document.getElementById('prev').style.cursor="pointer";
         document.getElementById('prev').disabled=false;
@@ -168,12 +166,10 @@ function populate() {
                 elements.innerText=choices[i];
             }
         }
-        console.log(quiz.answerArray,quiz.questionIndex);
         if(quiz.answerArray.length!==quiz.questionIndex){
             for(var i=0;i<choices.length;i++){
                 if(quiz.answerArray[quiz.questionIndex]===choices[i]){
                     if(quiz.getQuestionIndex().type==='radiogroup'){
-                        console.log("inside1");
                         document.getElementById("opt"+i).checked=true;
                         document.getElementById('next').disabled=false;
                         document.getElementById('next').style.cursor='pointer';
@@ -181,7 +177,6 @@ function populate() {
                         document.getElementById('submit').style.cursor='pointer';
                     }
                     else{
-                        console.log("inside2");
                         document.getElementById("opti"+i).default=true;
                         document.getElementById('next').disabled=false;
                         document.getElementById('next').style.cursor='pointer';
@@ -197,9 +192,7 @@ function populate() {
 }
 
 function prev_question() {
-    console.log("previous");
     quiz.prevQuestion();
-    console.log(quiz);
     populate();
 }
 function next_question() {
@@ -220,7 +213,6 @@ function next_question() {
         }
     }
     else{
-        console.log(document.getElementById('names_down'));
         ans=document.getElementById('names_down').value;
     }
     if(quiz.questionIndex===quiz.answerArray.length){
@@ -233,7 +225,6 @@ function next_question() {
             quiz.guess(ans);
 
     }
-    console.log(quiz);
     progress();
     populate();
 
@@ -263,7 +254,6 @@ function submit_test() {
         }
     }
     else{
-        console.log(document.getElementById('names_down'));
         ans=document.getElementById('names_down').value;
     }
     if(quiz.questionIndex===quiz.answerArray.length){
@@ -271,7 +261,6 @@ function submit_test() {
         quiz.guess(ans);
     }
     else{
-        console.log("come on");
 
             quiz.answerArray[quiz.questionIndex]=ans;
 
@@ -279,7 +268,6 @@ function submit_test() {
 
 
     }
-    console.log(quiz);
     document.getElementById('question_page').style.display="none";
     document.getElementById('finalPage').style.display="block";
     document.getElementById('score_final').innerHTML=quiz.score;
