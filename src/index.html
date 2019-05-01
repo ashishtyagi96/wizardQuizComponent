@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wizard Component with questions</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div id="warning">
+    <h5>Do not reload the page</h5>
+</div>
+<div id="confirm" style="display: none">
+    <h2>Are you sure,you want to submit the Test?</h2>
+    <button id="no" onclick="reconfirming()">NO</button>
+    <button id="yes" onclick="submit_test()">YES</button>
+</div>
+<div id="info_bar" style="text-align: center">x / y</div>
+<div id="myProgress">
+    <div id="myBar"></div>
+</div>
+
+<div id="question">
+    <div id="finalPage" style="display: none;">
+        <div id="thankyou">
+            <h1>THANK YOU</h1>
+        </div>
+        <div id="score">
+            <h3>Your Score is : <span id="score_final"></span></h3>
+        </div>
+    </div>
+    <div id="question_page">
+        <div id="question_body"></div>
+        <div id="choices">
+            <form>
+                <div id="radio_button">
+                    a) <input name="options" id="opt0" type="radio"><span id="choice0"></span><br>
+                    b) <input name="options" id="opt1" type="radio"><span id="choice1"></span><br>
+                    c) <input name="options" id="opt2" type="radio"><span id="choice2"></span><br>
+                    d) <input name="options" id="opt3" type="radio"><span id="choice3"></span><br>
+                </div>
+                <div id="drop_down">
+                    <select name="names_down" id="names_down" onchange="reset()">
+                        <option></option>
+                        <option id="opti0"></option>
+                        <option id="opti1"></option>
+                        <option id="opti2"></option>
+                        <option id="opti3"></option>
+                    </select>
+                </div>
+                <div id="buttons">
+                    <button id="prev" type="button" disabled onclick="prev_question()">PREV</button>
+                    <button id="next" type="button" disabled onclick="next_question()">NEXT</button>
+                    <button id="submit" type="button" disabled style="display: none" onclick="confirming()">SUBMIT</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="./js/questions.js"></script>
+<script type="text/javascript" src="../controllers/quiz_controller.js"></script>
+<script type="text/javascript" src="../app.js"></script>
+</body>
+</html>
